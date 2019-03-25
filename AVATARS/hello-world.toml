@@ -1,0 +1,10 @@
+[NODE]
+[HTTP]
+port = 8080
+
+[HTTP.STATIC]
+public = "/"
+
+[LOG]
+greetings = "Hello, serving ./DATA/public on http://localhost:8080"
+
