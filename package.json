@@ -1,7 +1,7 @@
 {
-  "name": "@isekai/template",
-  "version": "0.0.1",
-  "description": "Degit template for [ISEKAI_ENGINE]",
+  "name": "@isekai/core",
+  "version": "1.0.0",
+  "description": "Core [SKILL]s for isekai",
   "main": ".BIN/features.js",
   "bin": {
     "@isekai/template": ".BIN/cli.js"
