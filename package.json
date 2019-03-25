@@ -1,11 +1,7 @@
 {
   "name": "@isekai/core",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Core [SKILL]s for isekai",
-  "main": ".BIN/features.js",
-  "bin": {
-    "@isekai/template": ".BIN/cli.js"
-  },
   "scripts": {
     "start": "isekai run"
   },
