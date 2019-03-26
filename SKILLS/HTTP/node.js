@@ -30,6 +30,7 @@ export default ({
                 communityMember = false,
                 telemetry = false,
                 ssl_port = 443,
+                server = `staging`,
                 redirect = 80
             } = SSL;
         
@@ -51,6 +52,7 @@ export default ({
                 agreeTos,
                 email,
                 configDir,
+                server,
                 communityMember,
                 approvedDomains,
                 app,
