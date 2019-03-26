@@ -1,16 +1,14 @@
 {
   "name": "@isekai/core",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Core [SKILL]s for isekai",
   "scripts": {
     "start": "isekai run"
   },
   "dependencies": {
-    "@octokit/webhooks": "^5.3.3",
     "uuid": "^3.3.2",
     "isekai": "^0.0.8",
     "niceware": "^1.0.6",
-    "greenlock-express": "^2.6.8",
     "helmet": "^3.16.0",
     "commonmark": "^0.28.1"
   },
