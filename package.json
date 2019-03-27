@@ -3,17 +3,19 @@
   "version": "1.0.3",
   "description": "Core [SKILL]s for isekai",
   "scripts": {
-    "start": "isekai run"
+    "start": "isekai run",
+    "build": "isekai build all"
   },
   "dependencies": {
-    "uuid": "^3.3.2",
-    "isekai": "^0.0.8",
-    "niceware": "^1.0.6",
+    "commonmark": "^0.28.1",
     "helmet": "^3.16.0",
-    "commonmark": "^0.28.1"
+    "isekai": "*",
+    "niceware": "^1.0.6",
+    "node-fetch": "^2.3.0",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
-    "@isekai/eslint-config": "^1.0.0",
+    "@isekai/eslint-config": "*",
     "eslint": "^5.15.3"
   },
   "eslintConfig": {

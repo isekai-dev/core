@@ -29,8 +29,6 @@ export default ({
         zalgo,
         data = {}
     }) => {
-        console.log(ZALGOS.keys(), zalgo, ZALGOS.has(zalgo));
-
         if(!ZALGOS.has(zalgo)) {
             return;
         }

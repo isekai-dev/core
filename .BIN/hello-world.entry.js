@@ -1,8 +1,12 @@
 import isekai from "isekai";
-isekai.SET({"NODE":{},"HTTP":{"port":8080,"STATIC":{"public":"/"}},"LOG":{"greetings":"Hello, serving ./DATA/public on http://localhost:8080"}});
+isekai.SET({"NODE":{},"HTTP":{"port":8080,"STATIC":{"public":"/"}},"LOG":{"greetings":"Hello, serving ./DATA/public on http://localhost:8080"},"ZALGO":{},"ADMIN":{"zalgo":"restart"}});
 
-import HTTP from "../node_modules/isekai/SKILLS/HTTP/node.js";
+import HTTP from "../SKILLS/HTTP/node.js";
+import ZALGO from "../SKILLS/ZALGO/node.js";
+import ADMIN from "../SKILLS/ADMIN/node.js";
 
 isekai.EQUIP({
     HTTP,
+    ZALGO,
+    ADMIN,
 });

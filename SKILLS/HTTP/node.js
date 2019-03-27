@@ -19,8 +19,7 @@ export default ({
         app.use(helmet());
 
         app.listen(port, () => {
-            console.log(`[HTTP]`);
-            console.log(`Listening on http://localhost:8080`);
+            console.log(`[HTTP] Listening on http://localhost:${port}`);
         });
 
         SET({

@@ -1,5 +1,4 @@
-import { exec } from "child_process";
-
+import runner from "./runner.js";
 
 export default ({
     ZALGO,
@@ -11,7 +10,10 @@ export default ({
         zalgo,
         strength: 18,
         handler: () => {
-            exec(`npx isekai pull`);
+            runner(`git pull origin master`, `npm install`, `npm run build`).
+                then(() => {
+                    process.exit();
+                });
             
             return {
                 restart: true
@@ -20,6 +22,8 @@ export default ({
     });
 
     if(!zalgo) {
-        console.log(`ADMIN ZALGO: ${admin_zalgo}`);
-    }
+        return console.log(`[ADMIN] ZALGO: ${admin_zalgo}`);
+    } 
+        
+    console.log(`[ADMIN] STARTED`);
 };
