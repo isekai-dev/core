@@ -20,15 +20,14 @@ export default ({
                 });
             };
         
-            const send = (call) => 
-                fetch(`/divine`, {
-                    method: `POST`,
-                    cache: `no-cache`,
-                    headers: {
-                        "Content-Type": `application/json; charset=utf-8`,
-                    },
-                    body: JSON.stringify(call)
-                });
+            const send = (call) => fetch(`/divine`, {
+                method: `POST`,
+                cache: `no-cache`,
+                headers: {
+                    "Content-Type": `application/json; charset=utf-8`,
+                },
+                body: JSON.stringify(call)
+            });
         
             return Object.assign(send, {
                 on: (new_signals) => {

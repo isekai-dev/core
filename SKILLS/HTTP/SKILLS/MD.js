@@ -5,11 +5,10 @@ import chokidar from "chokidar";
 import { version } from "../../../package.json";
 
 const last_restart = new Date();
-const power_words = (target) => 
-    target.
-        replace(/(\[.[^\]\[]*\])/ug, `<span class='power_word'>$1</span>`).
-        replace(`\${version}`, version).
-        replace(`\${server_restart}`, `${last_restart.toLocaleString()} PDT`);
+const power_words = (target) => target.
+    replace(/(\[.[^\]\[]*\])/ug, `<span class='power_word'>$1</span>`).
+    replace(`\${version}`, version).
+    replace(`\${server_restart}`, `${last_restart.toLocaleString()} PDT`);
 
 const make_data = ([ markdown, template ]) => {
     const reader = new commonmark.Parser();

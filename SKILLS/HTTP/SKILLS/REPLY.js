@@ -6,8 +6,5 @@ export default ({
     } = HTTP;
 
     Object.entries(REPLY).
-        forEach(([ path, response ]) => 
-            HTTP.get(path, (res) => 
-                res.send(response))
-        );
+        forEach(([ path, response ]) => HTTP.get(path, (res) => res.send(response)));
 };
