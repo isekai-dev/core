@@ -11,3 +11,4 @@ greetings = "Hello, serving ./DATA/public on http://localhost:8080"
 [ZALGO]
 [ADMIN]
 zalgo = "restart"
+url = "http://localhost:8080"

@@ -8,12 +8,9 @@ const addListeners = (object) => Object.entries(object).
         };
     });
 
-const keys = {
-
-};
+const keys = {};
 
 const handlerMap = new Map();
-
 const global_handlers = new Set();
 
 addListeners({
@@ -37,24 +34,28 @@ addListeners({
     }
 });
 
-export default Object.assign(({
-    which,
-    handler
-}) => {
-    if(!which) {
-        global_handlers.add(handler);
-        
+export default ({
+    SET
+}) => SET({
+    INPUT: Object.assign(({
+        which,
+        handler
+    }) => {
+        if(!which) {
+            global_handlers.add(handler);
+            
+            return () => {
+                global_handlers.delete(handler);
+            };
+        }
+    
+        const set = handlerMap.get(which) || new Set();
+    
+        set.add(handler);
+        handlerMap.set(which, set);
+    
         return () => {
-            global_handlers.delete(handler);
+            set.remove(handler);
         };
-    }
-
-    const set = handlerMap.get(which) || new Set();
-
-    set.add(handler);
-    handlerMap.set(which, set);
-
-    return () => {
-        set.remove(handler);
-    };
-}, { keys });
+    }, { keys })
+});

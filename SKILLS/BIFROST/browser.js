@@ -2,7 +2,7 @@ export default ({
     SET
 }) => {
     SET({
-        BROWSER_BIFROST: (path) => {
+        BIFROST: (path) => {
             const signal_sets = new Set();
         
             const eventStream = new EventSource(`${path}/CLIENT_VERSION`);
@@ -19,21 +19,12 @@ export default ({
                     }
                 });
             };
-        
-            const send = (call) => fetch(`/divine`, {
-                method: `POST`,
-                cache: `no-cache`,
-                headers: {
-                    "Content-Type": `application/json; charset=utf-8`,
-                },
-                body: JSON.stringify(call)
-            });
-        
-            return Object.assign(send, {
+    
+            return {
                 on: (new_signals) => {
                     signal_sets.add(new_signals);
                 } 
-            });
+            };
         }
     });
 };
