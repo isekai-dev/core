@@ -10,7 +10,7 @@ export default ({
         zalgo,
         strength: 18,
         handler: () => {
-            runner(`git pull origin master`, `npm install`, `npm run build`).
+            runner(`git stash`, `git pull origin master`, `npm install`, `npm run build`).
                 then(() => {
                     process.exit();
                 });
