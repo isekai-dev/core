@@ -1,13 +1,16 @@
 import chokidar from "chokidar";
 import fs from "fs";
+import niceware from "niceware";
 
 // TODO: Move versioning out?
 export default ({
     HTTP,
     SET
 }) => {
+    const addresses = new Map();
+
     SET({
-        BIFROST: (path, purpose = `unknown nefarious purposes`) => {
+        BIFROST: Object.assign((path, purpose = `unknown nefarious purposes`) => {
             let snapshot = ``;
 
             let writers = new Set();
@@ -51,9 +54,15 @@ export default ({
                 res.write(`\n`);
         
                 const write = (data) => res.write(`data:${JSON.stringify(data)}\n\n`);
-        
+                const id = niceware.generatePassphrase(16);
+                addresses.set(id, write);
                 write(snapshot);
-        
+                
+                write({
+                    signal: `ID`,
+                    data: id
+                });
+                
                 if(req.params.version) {
                     if(req.params.version.trim() !== version.trim()) {
                         write({
@@ -65,7 +74,10 @@ export default ({
 
                 writers.add(write);
 
-                req.on(`close`, () => writers.delete(res));
+                req.on(`close`, () => {
+                    writers.delete(res);
+                    addresses.delete(id);
+                });
             };
 
             HTTP.get(`${path}/:version`, handler);
@@ -86,6 +98,15 @@ export default ({
                     data
                 }));
             };
-        }
+        }, {
+            to: (address, data) => {
+                const writer = addresses.get(address);
+                if(!writer) {
+                    return false;
+                }
+
+                writer(data);
+            }
+        })
     });
 };

@@ -6,6 +6,8 @@ export default ({
     },
     SET
 }) => {
+    const listeners = new Set();
+
     const ZALGOS = new Map(Object.entries({
         echo: () => ({
             message: `echo` 
@@ -30,7 +32,10 @@ export default ({
         data = {}
     }) => {
         if(!ZALGOS.has(zalgo)) {
-            return;
+            return listeners.forEach((hey_listen) => hey_listen({
+                zalgo,
+                data
+            }));
         }
 
         return ZALGOS.get(zalgo)(data);
@@ -40,10 +45,20 @@ export default ({
         ZALGOS.delete(zalgo);
     };
 
+    const listen = (listener) => {
+        listeners.add(listener);
+        
+        return () => {
+            listeners.remove(listener);
+        };
+    };
+
     SET({
         ZALGO: Object.assign(set_zalgo, {
             remove,
             fire,
+            listen,
+            make: niceware.generatePassphrase
         })
     });
 
