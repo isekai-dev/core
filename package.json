@@ -1,6 +1,6 @@
 {
   "name": "@isekai/core",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Core [SKILL]s for isekai",
   "scripts": {
     "start": "isekai run",
@@ -9,7 +9,7 @@
   "dependencies": {
     "commonmark": "^0.28.1",
     "helmet": "^3.16.0",
-    "isekai": "*",
+    "isekai": "isekai-dev/engine",
     "niceware": "^1.0.6",
     "node-fetch": "^2.3.0",
     "uuid": "^3.3.2"
